@@ -1,5 +1,5 @@
 #Summit Files
-A file manager for Summit
+A file manager for [Summit](https://github.com/notduncansmith/summit)
 
 ##Installation
 
@@ -22,6 +22,7 @@ var app = Summit({ files: {
 Summit-files adds two new collections to Summit.
 * Folder
 * File
+
 It also adds routes to create, edit, and retrieve folders and files
 
 ###Folder routes
