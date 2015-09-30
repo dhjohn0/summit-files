@@ -8,9 +8,7 @@
   "devDependencies": {},
   "dependencies": {
     "bogart-edge": "^0.7.3",
-    "path": "^0.12.7",
-    "summit": "^0.1.22",
-    "uuid": "^2.0.1"
+    "summit": "^0.1.22"
   },
   "license": "MIT"
 }
