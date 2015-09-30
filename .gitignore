@@ -1,0 +1,4 @@
+node_modules/*
+.pouch_*
+.vagrant/*
+npm-debug.log.*

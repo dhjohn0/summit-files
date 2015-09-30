@@ -1,0 +1,35 @@
+.files-browser #folders {
+	background: #aaaaff;
+	padding: 5px;
+}
+
+.files-browser #folders ul {
+	list-style: none;
+	padding-left: 0;
+}
+
+.files-browser #folders ul li {
+	padding: 5px;
+}
+
+.files-browser #folders ul li:hover {
+	background: #ccccff;
+}
+
+.files-browser #files {
+	background: #dfdfdf;
+	padding: 5px;
+}
+
+.files-browser #files ul {
+	list-style: none;
+	padding-left: 0;
+}
+
+.files-browser #files ul li {
+	padding: 5px;
+}
+
+.files-browser #files ul li:hover {
+	background: #efefef;
+}
