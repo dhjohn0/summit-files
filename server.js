@@ -8,9 +8,6 @@ var app = new Summit({
     name: process.env.DBNAME || 'summit',
     https: process.env.DBHTTPS || "false",
     auth: process.env.DBAUTH || ''
-  },
-  files: {
-    path: '/vagrant/uploads'
   }
 });
 
