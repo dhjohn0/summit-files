@@ -42,3 +42,6 @@ POST /file/:folder (file)
 PUT /file/:id ([name], [permissions])
 DEL /file/:id ()
 ```
+
+##Example Server
+There is an example server included at ./server.js
