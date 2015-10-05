@@ -8,7 +8,7 @@ npm install --save summit-files
 ```
 
 ##Configuration
-A default configuration setup is located in lib/defaultConfig.js
+A default configuration setup is located in `./lib/defaultConfig.js`
 You can override any of these settings when starting Summit by passing them in in Summit's config. ex:
 ```
 var app = Summit({ files: {
@@ -45,4 +45,4 @@ DEL /file/:id ()
 ```
 
 ##Example Server
-There is an example server included at ./server.js
+There is an example server included at `./examples/json/`, which can be launched with the `server.js` in the same folder

@@ -51,10 +51,10 @@ app.collection({
 
 var router = app.router();
 
-app.invoke(require('./app'));
+app.invoke(require('../../app'));
 
 router.get('/', function (respond, views, user) {
-  return respond(views.example.index, {
+  return respond(views.index, {
   	user: user
   });
 });

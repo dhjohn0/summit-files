@@ -524,12 +524,17 @@ $(function () {
 					var a = $('<a href="/file/view/' + f1._id + '">' + f1.name + '</a>');
 					var li = $('<li></li>').append(a);
 
+					var group = $('<span class="pull-right"/>');
+					var dload = $('<a href="/file/download/' + f1._id + '"><span class="glyphicon glyphicon-download"></span></a>');
+					group.append(dload);
+
 					if (f1.permissions && f1.permissions.write) {
-						var dload = $('<a href="/file/download/' + f1._id + '"><span class="glyphicon glyphicon-download"></span></a>');
 						var edit = $('<a href="#" data-toggle="modal" data-target="#editModal" data-type="file" data-id="' + f1._id + '"><span class="glyphicon glyphicon-edit"></span></a>');
 						var remove = $('<a href="#" data-toggle="modal" data-target="#removeFileModal" data-id="' + f1._id + '"><span class="glyphicon glyphicon-trash"></span></a>');
-						li.append($('<span class="pull-right"/>').append(dload).append(' ').append(edit).append(' ').append(remove));
+						group.append(' ').append(edit).append(' ').append(remove);
 					}
+
+					li.append(group);
 
 					$('#files ul').append(li);
 				});
