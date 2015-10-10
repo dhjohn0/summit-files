@@ -7,12 +7,11 @@
 {{#replace "top"}}
 
 <div class="container-fluid">
-	{{#user}}
+	{{#if user}}
 		Welcome {{firstName}} {{lastName}}! <a href="#" id="logout">Logout</a>
-	{{/user}}
-	{{^user}}
+	{{/else}}
 		<a href="#" id="login" data-toggle="modal" data-target="#loginModal">Login</a>
-	{{/user}}
+	{{/if}}
 </div>
 
 {{/replace}}
