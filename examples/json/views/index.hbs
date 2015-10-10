@@ -70,6 +70,7 @@
 </form>
 
 <form id="newFolderForm">
+	<input type="hidden" name="output" value="json" />
 	<div class="modal fade" id="newFolderModal" tabindex="-1" role="dialog">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
@@ -90,6 +91,7 @@
 </form>
 
 <form id="editForm" data-id="" data-type="">
+	<input type="hidden" name="output" value="json" />
 	<div class="modal fade" id="editModal" tabindex="-1" role="dialog">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
@@ -200,6 +202,7 @@
 </form>
 
 <form id="removeFolderForm" data-id="">
+	<input type="hidden" name="output" value="json" />
 	<div class="modal fade" id="removeFolderModal" tabindex="-1" role="dialog">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
@@ -225,6 +228,7 @@
 </form>
 
 <form id="removeFileForm" data-id="">
+	<input type="hidden" name="output" value="json" />
 	<div class="modal fade" id="removeFileModal" tabindex="-1" role="dialog">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
@@ -250,6 +254,7 @@
 </form>
 
 <form id="newFileForm" enctype="multipart/form-data" method="POST">
+	<input type="hidden" name="output" value="html" />
 	<div class="modal fade" id="newFileModal" tabindex="-1" role="dialog">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
@@ -364,7 +369,7 @@ $(function () {
 	$('#editModal').on('show.bs.modal', function (e) {
 		var trigger = $(e.relatedTarget);
 		var form = $('#editForm');
-		var url = '/' + trigger.data('type') + '/' + trigger.data('id');
+		var url = '/' + trigger.data('type') + '/' + trigger.data('id') + '?output=json';
 
 		form.data('id', trigger.data('id'));
 		form.data('type', trigger.data('type'));
@@ -477,8 +482,8 @@ $(function () {
 	});
 
 	function loadFolder() {
-		var url = '/folders';
-		if (folder && folder !== '0') url = '/folder/' + folder + '?includeParent=true';
+		var url = '/folders?output=json';
+		if (folder && folder !== '0') url = '/folder/' + folder + '?includeParent=true&output=json';
 
 		$.ajax({
 			url: url,
