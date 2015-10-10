@@ -1,0 +1,75 @@
+{{#extend "default_layout"}}
+
+{{#append "meta"}}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{{/append}}
+
+{{#replace "top"}}
+
+<div class="container-fluid">
+  {{#user}}
+    Welcome {{firstName}} {{lastName}}! <a href="#" id="logout">Logout</a>
+  {{/user}}
+  {{^user}}
+    <a href="#" id="login" data-toggle="modal" data-target="#loginModal">Login</a>
+  {{/user}}
+</div>
+
+{{/replace}}
+
+{{#replace "body"}}
+
+<div class="container">
+  <div class="files-browser">
+    <div class="row">
+      <div class="col-xs-12">
+        <h1 id="name"></h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-md-4">
+        <div id="folders">
+          <ul>
+            {{#folders.children.folders}}
+              <li>
+                <a href="/folder/{{_id}}?includeParent=true">{{name}}</a>
+                {{#permissions.write}}
+                  <span class="pull-right">
+                    <a href="#"><span class="glyphicon glyphicon-edit"></span></a>
+                    <a href="#"><span class="glyphicon glyphicon-trash"></span></a>
+                  </span>
+                {{/permissions.write}}
+              </li>
+            {{/folders.children.folders}}
+          </ul>
+          <button id="newFolderButton" type="button" class="btn btn-default" data-toggle="modal" data-target="#newFolderModal">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-8">
+        <div id="files">
+          <ul>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{/replace}}
+
+{{#append "styles"}}
+<link href="/css/bootstrap.css" rel="stylesheet" />
+{{/append}}
+
+{{#append "scripts"}}
+<script type="text/javascript" src="/js/jquery.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/trails.min.js"></script>
+
+<script type="text/javascript">
+</script>
+
+{{/append}}
+{{/extend}}
