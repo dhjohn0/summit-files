@@ -7,11 +7,11 @@
 {{#replace "top"}}
 
 <div class="container-fluid">
-	{{#if user}}
-		Welcome {{user.firstName}} {{user.lastName}}! <a href="#" id="logout">Logout</a>
-	{{else}}
-		<a href="#" id="login" data-toggle="modal" data-target="#loginModal">Login</a>
-	{{/if}}
+  {{#if user}}
+    Welcome {{user.firstName}} {{user.lastName}}! <a href="#" id="logout">Logout</a>
+  {{else}}
+    <a href="#" id="login" data-toggle="modal" data-target="#loginModal">Login</a>
+  {{/if}}
 </div>
 
 {{/replace}}
@@ -19,258 +19,258 @@
 {{#replace "body"}}
 
 <div class="container">
-	<div class="files-browser">
-		<div class="row">
-			<div class="col-xs-12">
-				<h1 id="name"></h1>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-12 col-md-4">
-				<div id="folders">
-					<ul>
-					</ul>
-					<button id="newFolderButton" type="button" class="btn btn-default" data-toggle="modal" data-target="#newFolderModal">
-						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-					</button>
-				</div>
-			</div>
-			<div class="col-xs-12 col-md-8">
-				<div id="files">
-					<ul>
-					</ul>
-					<button id="newFileButton" type="button" class="btn btn-default" data-toggle="modal" data-target="#newFileModal">
-						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-					</button>
-				</div>
-			</div>
-		</div>
-	</div>
+  <div class="files-browser">
+    <div class="row">
+      <div class="col-xs-12">
+        <h1 id="name"></h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-md-4">
+        <div id="folders">
+          <ul>
+          </ul>
+          <button id="newFolderButton" type="button" class="btn btn-default" data-toggle="modal" data-target="#newFolderModal">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-8">
+        <div id="files">
+          <ul>
+          </ul>
+          <button id="newFileButton" type="button" class="btn btn-default" data-toggle="modal" data-target="#newFileModal">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <form id="loginForm">
-	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title">Login</h4>
-	      </div>
-	      <div class="modal-body">
-	        <input type="text" class="form-control" name="username" value="" placeholder="Username" />
-	        <input type="password" class="form-control" name="password" value="" placeholder="Password" />
-	      </div>
-	      <div class="modal-footer">
-	        <input type="submit" class="btn btn-primary" value="Login" />
-	      </div>
-	    </div>
-	  </div>
-	</div>
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Login</h4>
+        </div>
+        <div class="modal-body">
+          <input type="text" class="form-control" name="username" value="" placeholder="Username" />
+          <input type="password" class="form-control" name="password" value="" placeholder="Password" />
+        </div>
+        <div class="modal-footer">
+          <input type="submit" class="btn btn-primary" value="Login" />
+        </div>
+      </div>
+    </div>
+  </div>
 </form>
 
 <form id="newFolderForm">
-	<input type="hidden" name="output" value="json" />
-	<div class="modal fade" id="newFolderModal" tabindex="-1" role="dialog">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title">Folder Name</h4>
-	      </div>
-	      <div class="modal-body">
-	        <input type="text" class="form-control" name="name" value="" placeholder="Name" />
-	        <input type="hidden" name="parent" value="" />
-	      </div>
-	      <div class="modal-footer">
-	        <input type="submit" class="btn btn-primary" value="Create" />
-	      </div>
-	    </div>
-	  </div>
-	</div>
+  <input type="hidden" name="output" value="json" />
+  <div class="modal fade" id="newFolderModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Folder Name</h4>
+        </div>
+        <div class="modal-body">
+          <input type="text" class="form-control" name="name" value="" placeholder="Name" />
+          <input type="hidden" name="parent" value="" />
+        </div>
+        <div class="modal-footer">
+          <input type="submit" class="btn btn-primary" value="Create" />
+        </div>
+      </div>
+    </div>
+  </div>
 </form>
 
 <form id="editForm" data-id="" data-type="">
-	<input type="hidden" name="output" value="json" />
-	<div class="modal fade" id="editModal" tabindex="-1" role="dialog">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title">Properties</h4>
-	      </div>
-	      <div class="modal-body">
-	      	<div class="container-fluid">
-	      		<div class="row">
-	      			<div class="col-xs-12">
-	      				<input type="text" class="form-control" name="name" value="" placeholder="Name" />
-	      			</div>
-	      		</div>
+  <input type="hidden" name="output" value="json" />
+  <div class="modal fade" id="editModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Properties</h4>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-xs-12">
+                <input type="text" class="form-control" name="name" value="" placeholder="Name" />
+              </div>
+            </div>
 
-	      		<div class="row">
-	      			<div class="col-xs-12">
-	      				<div class="panel panel-default">
-								  <div class="panel-heading">
-								  	<div class="row">
-								  		<div class="col-xs-4 col-sm-2">
-								  			Owner:
-								  		</div>
-								  		<div class="col-xs-8 col-sm-10">
-								  			<select class="form-control" name="permissions[owner][id]">
-								  			</select>
-								  		</div>
-								  	</div>
-								  </div>
-								  <div class="panel-body">
-								    <div class="row">
-								    	<div class="col-xs-6 col-sm-4">
-								    		<input type="checkbox" name="permissions[owner][read]" value="true" /> Read
-								    	</div>
-								    	<div class="col-xs-6 col-sm-4">
-								    		<input type="checkbox" name="permissions[owner][write]" value="true" /> Write
-								    	</div>
-								    	<div class="col-xs-6 col-sm-4 permissionsCreate">
-								    		<input type="checkbox" name="permissions[owner][create]" value="true" /> Create
-								    	</div>
-								    </div>
-								  </div>
-								</div>
-	        		</div>
-	        	</div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <div class="row">
+                      <div class="col-xs-4 col-sm-2">
+                        Owner:
+                      </div>
+                      <div class="col-xs-8 col-sm-10">
+                        <select class="form-control" name="permissions[owner][id]">
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel-body">
+                    <div class="row">
+                      <div class="col-xs-6 col-sm-4">
+                        <input type="checkbox" name="permissions[owner][read]" value="true" /> Read
+                      </div>
+                      <div class="col-xs-6 col-sm-4">
+                        <input type="checkbox" name="permissions[owner][write]" value="true" /> Write
+                      </div>
+                      <div class="col-xs-6 col-sm-4 permissionsCreate">
+                        <input type="checkbox" name="permissions[owner][create]" value="true" /> Create
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-	        	<div class="row">
-	      			<div class="col-xs-12">
-	      				<div class="panel panel-default">
-								  <div class="panel-heading">
-								  	<div class="row">
-								  		<div class="col-xs-4 col-sm-2">
-								  			Group:
-								  		</div>
-								  		<div class="col-xs-8 col-sm-10">
-								  			<input type="text" class="form-control" name="permissions[group][name]" value="" placeholder="group" />
-								  		</div>
-								  	</div> 
-								  </div>
-								  <div class="panel-body">
-								    <div class="row">
-								    	<div class="col-xs-6 col-sm-4">
-								    		<input type="checkbox" name="permissions[group][read]" value="true" /> Read
-								    	</div>
-								    	<div class="col-xs-6 col-sm-4">
-								    		<input type="checkbox" name="permissions[group][write]" value="true" /> Write
-								    	</div>
-								    	<div class="col-xs-6 col-sm-4 permissionsCreate">
-								    		<input type="checkbox" name="permissions[group][create]" value="true" /> Create
-								    	</div>
-								    </div>
-								  </div>
-								</div>
-	        		</div>
-	        	</div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <div class="row">
+                      <div class="col-xs-4 col-sm-2">
+                        Group:
+                      </div>
+                      <div class="col-xs-8 col-sm-10">
+                        <input type="text" class="form-control" name="permissions[group][name]" value="" placeholder="group" />
+                      </div>
+                    </div> 
+                  </div>
+                  <div class="panel-body">
+                    <div class="row">
+                      <div class="col-xs-6 col-sm-4">
+                        <input type="checkbox" name="permissions[group][read]" value="true" /> Read
+                      </div>
+                      <div class="col-xs-6 col-sm-4">
+                        <input type="checkbox" name="permissions[group][write]" value="true" /> Write
+                      </div>
+                      <div class="col-xs-6 col-sm-4 permissionsCreate">
+                        <input type="checkbox" name="permissions[group][create]" value="true" /> Create
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-	        	<div class="row">
-	      			<div class="col-xs-12">
-	      				<div class="panel panel-default">
-								  <div class="panel-heading">
-								  	Everyone
-								  </div>
-								  <div class="panel-body">
-								    <div class="row">
-								    	<div class="col-xs-6 col-sm-4">
-								    		<input type="checkbox" name="permissions[everyone][read]" value="true" /> Read
-								    	</div>
-								    	<div class="col-xs-6 col-sm-4">
-								    		<input type="checkbox" name="permissions[everyone][write]" value="true" /> Write
-								    	</div>
-								    	<div class="col-xs-6 col-sm-4 permissionsCreate">
-								    		<input type="checkbox" name="permissions[everyone][create]" value="true" /> Create
-								    	</div>
-								    </div>
-								  </div>
-								</div>
-	        		</div>
-	        	</div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    Everyone
+                  </div>
+                  <div class="panel-body">
+                    <div class="row">
+                      <div class="col-xs-6 col-sm-4">
+                        <input type="checkbox" name="permissions[everyone][read]" value="true" /> Read
+                      </div>
+                      <div class="col-xs-6 col-sm-4">
+                        <input type="checkbox" name="permissions[everyone][write]" value="true" /> Write
+                      </div>
+                      <div class="col-xs-6 col-sm-4 permissionsCreate">
+                        <input type="checkbox" name="permissions[everyone][create]" value="true" /> Create
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-	        </div>
-	      </div>
-	      <div class="modal-footer">
-	        <input type="submit" class="btn btn-primary" value="Update" />
-	      </div>
-	    </div>
-	  </div>
-	</div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <input type="submit" class="btn btn-primary" value="Update" />
+        </div>
+      </div>
+    </div>
+  </div>
 </form>
 
 <form id="removeFolderForm" data-id="">
-	<input type="hidden" name="output" value="json" />
-	<div class="modal fade" id="removeFolderModal" tabindex="-1" role="dialog">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title">Remove Folder</h4>
-	      </div>
-	      <div class="modal-body">
-	      	<div class="container-fluid">
-	      		<div class="row">
-	      			<div class="col-xs-12">
-	        			<input type="checkbox" name="recursive" value="true" />Recursive Remove?
-	        		</div>
-	        	</div>
-	        </div>
-	      </div>
-	      <div class="modal-footer">
-	        <input type="submit" class="btn btn-primary" value="Remove" />
-	      </div>
-	    </div>
-	  </div>
-	</div>
+  <input type="hidden" name="output" value="json" />
+  <div class="modal fade" id="removeFolderModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Remove Folder</h4>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-xs-12">
+                <input type="checkbox" name="recursive" value="true" />Recursive Remove?
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <input type="submit" class="btn btn-primary" value="Remove" />
+        </div>
+      </div>
+    </div>
+  </div>
 </form>
 
 <form id="removeFileForm" data-id="">
-	<input type="hidden" name="output" value="json" />
-	<div class="modal fade" id="removeFileModal" tabindex="-1" role="dialog">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title">Remove File</h4>
-	      </div>
-	      <div class="modal-body">
-	      	<div class="container-fluid">
-	      		<div class="row">
-	      			<div class="col-xs-12">
-	        			Delete File?
-	        		</div>
-	        	</div>
-	        </div>
-	      </div>
-	      <div class="modal-footer">
-	        <input type="submit" class="btn btn-primary" value="Remove" />
-	      </div>
-	    </div>
-	  </div>
-	</div>
+  <input type="hidden" name="output" value="json" />
+  <div class="modal fade" id="removeFileModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Remove File</h4>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-xs-12">
+                Delete File?
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <input type="submit" class="btn btn-primary" value="Remove" />
+        </div>
+      </div>
+    </div>
+  </div>
 </form>
 
 <form id="newFileForm" enctype="multipart/form-data" method="POST">
-	<input type="hidden" name="output" value="html" />
-	<div class="modal fade" id="newFileModal" tabindex="-1" role="dialog">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title">Upload File</h4>
-	      </div>
-	      <div class="modal-body">
-	      	<input type="hidden" name="redirect" />
-	        <input type="file" class="form-control" name="file" />
-	      </div>
-	      <div class="modal-footer">
-	        <input type="submit" class="btn btn-primary" value="Create" />
-	      </div>
-	    </div>
-	  </div>
-	</div>
+  <input type="hidden" name="output" value="html" />
+  <div class="modal fade" id="newFileModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Upload File</h4>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" name="redirect" />
+          <input type="file" class="form-control" name="file" />
+        </div>
+        <div class="modal-footer">
+          <input type="submit" class="btn btn-primary" value="Create" />
+        </div>
+      </div>
+    </div>
+  </div>
 </form>
 
 {{/replace}}
@@ -287,277 +287,277 @@
 <script type="text/javascript">
 
 $(function () {
-	var folder = null;
+  var folder = null;
 
-	$('#loginForm').submit(function (e) {
-		var data = $(this).serialize();
+  $('#loginForm').submit(function (e) {
+    var data = $(this).serialize();
 
-		$.ajax({
-			url: '/login',
-			method: 'POST',
-			data: data
-		}).then(function (result) {
-			if (result.success)
-				window.location.reload(true);
-		});
+    $.ajax({
+      url: '/login',
+      method: 'POST',
+      data: data
+    }).then(function (result) {
+      if (result.success)
+        window.location.reload(true);
+    });
 
-		e.preventDefault();
-	});
+    e.preventDefault();
+  });
 
-	$('#logout').click(function (e) {
-		$.ajax({
-			url: '/logout',
-			method: 'GET',
-			cache: false
-		}).then(function (result) {
-			if (result.success)
-				window.location.reload(true);
-		}, function (e) {
-			var error = e.responseJSON;
-			alert(error.message);
-		});
-		e.preventDefault();
-	});
+  $('#logout').click(function (e) {
+    $.ajax({
+      url: '/logout',
+      method: 'GET',
+      cache: false
+    }).then(function (result) {
+      if (result.success)
+        window.location.reload(true);
+    }, function (e) {
+      var error = e.responseJSON;
+      alert(error.message);
+    });
+    e.preventDefault();
+  });
 
-	$('#newFolderForm').submit(function (e) {
-		$('#newFolderForm [name="parent"]').val(folder);
-		var data = $(this).serialize();
+  $('#newFolderForm').submit(function (e) {
+    $('#newFolderForm [name="parent"]').val(folder);
+    var data = $(this).serialize();
 
-		$.ajax({
-			url: '/folder',
-			method: 'POST',
-			data: data,
-			cache: false
-		}).then(function (result) {
-			window.location.reload(true);
-		}, function (e) {
-			var error = e.responseJSON;
-			alert(error.message);
-		});
+    $.ajax({
+      url: '/folder',
+      method: 'POST',
+      data: data,
+      cache: false
+    }).then(function (result) {
+      window.location.reload(true);
+    }, function (e) {
+      var error = e.responseJSON;
+      alert(error.message);
+    });
 
-		e.preventDefault();
-	});
+    e.preventDefault();
+  });
 
-	$('#editForm').submit(function (e) {
-		if ($(this).data('type') !== 'folder') {
-			$(this).find('[name="permissions[owner][create]"]').prop('checked', false);
-			$(this).find('[name="permissions[group][create]"]').prop('checked', false);
-			$(this).find('[name="permissions[everyone][create]"]').prop('checked', false);
-		}
-		var data = $(this).serialize();
-		var url = '/' + $(this).data('type') + '/' + $(this).data('id');
+  $('#editForm').submit(function (e) {
+    if ($(this).data('type') !== 'folder') {
+      $(this).find('[name="permissions[owner][create]"]').prop('checked', false);
+      $(this).find('[name="permissions[group][create]"]').prop('checked', false);
+      $(this).find('[name="permissions[everyone][create]"]').prop('checked', false);
+    }
+    var data = $(this).serialize();
+    var url = '/' + $(this).data('type') + '/' + $(this).data('id');
 
-		$.ajax({
-			url: url,
-			method: 'PUT',
-			data: data,
-			cache: false
-		}).then(function (result) {
-			window.location.reload(true);
-		}, function (e) {
-			var error = e.responseJSON;
-			alert(error.message);
-		});
+    $.ajax({
+      url: url,
+      method: 'PUT',
+      data: data,
+      cache: false
+    }).then(function (result) {
+      window.location.reload(true);
+    }, function (e) {
+      var error = e.responseJSON;
+      alert(error.message);
+    });
 
-		e.preventDefault();
-	});
+    e.preventDefault();
+  });
 
-	function permissionsCheck(item, set, prop) {
-		if (!item.permissions)
-			return true;
-		if (!item.permissions[set])
-			return false;
-		return item.permissions[set][prop];
-	}
+  function permissionsCheck(item, set, prop) {
+    if (!item.permissions)
+      return true;
+    if (!item.permissions[set])
+      return false;
+    return item.permissions[set][prop];
+  }
 
-	$('#editModal').on('show.bs.modal', function (e) {
-		var trigger = $(e.relatedTarget);
-		var form = $('#editForm');
-		var url = '/' + trigger.data('type') + '/' + trigger.data('id') + '?output=json';
+  $('#editModal').on('show.bs.modal', function (e) {
+    var trigger = $(e.relatedTarget);
+    var form = $('#editForm');
+    var url = '/' + trigger.data('type') + '/' + trigger.data('id') + '?output=json';
 
-		form.data('id', trigger.data('id'));
-		form.data('type', trigger.data('type'));
-		$.ajax({
-			url: url,
-			method: 'GET',
-			cache: false
-		}).then(function (item) {
-			form.find('[name="name"]').val(item.name);
+    form.data('id', trigger.data('id'));
+    form.data('type', trigger.data('type'));
+    $.ajax({
+      url: url,
+      method: 'GET',
+      cache: false
+    }).then(function (item) {
+      form.find('[name="name"]').val(item.name);
 
-			form.find('[name="permissions[owner][id]"]').val(item.permissions && item.permissions.owner ? item.permissions.owner.id : -1);
-			form.find('[name="permissions[owner][read]"]').prop('checked', permissionsCheck(item, 'owner', 'read') );
-			form.find('[name="permissions[owner][write]"]').prop('checked', permissionsCheck(item, 'owner', 'write') );
+      form.find('[name="permissions[owner][id]"]').val(item.permissions && item.permissions.owner ? item.permissions.owner.id : -1);
+      form.find('[name="permissions[owner][read]"]').prop('checked', permissionsCheck(item, 'owner', 'read') );
+      form.find('[name="permissions[owner][write]"]').prop('checked', permissionsCheck(item, 'owner', 'write') );
 
-			form.find('[name="permissions[group][name]"]').val(item.permissions && item.permissions.group ? item.permissions.group.name : '');
-			form.find('[name="permissions[group][read]"]').prop('checked', permissionsCheck(item, 'group', 'read') );
-			form.find('[name="permissions[group][write]"]').prop('checked', permissionsCheck(item, 'group', 'write') );
+      form.find('[name="permissions[group][name]"]').val(item.permissions && item.permissions.group ? item.permissions.group.name : '');
+      form.find('[name="permissions[group][read]"]').prop('checked', permissionsCheck(item, 'group', 'read') );
+      form.find('[name="permissions[group][write]"]').prop('checked', permissionsCheck(item, 'group', 'write') );
 
-			form.find('[name="permissions[everyone][read]"]').prop('checked', permissionsCheck(item, 'everyone', 'read') );
-			form.find('[name="permissions[everyone][write]"]').prop('checked', permissionsCheck(item, 'everyone', 'write') );
+      form.find('[name="permissions[everyone][read]"]').prop('checked', permissionsCheck(item, 'everyone', 'read') );
+      form.find('[name="permissions[everyone][write]"]').prop('checked', permissionsCheck(item, 'everyone', 'write') );
 
-			if ($(this).data('type') === 'folder') {
-				form.find('[name="permissions[owner][create]"]').prop('checked', permissionsCheck(item, 'owner', 'create') );
-				form.find('[name="permissions[group][create]"]').prop('checked', permissionsCheck(item, 'group', 'create') );
-				form.find('[name="permissions[everyone][create]"]').prop('checked', permissionsCheck(item, 'everyone', 'create') );
-				form.find('.permissionsCreate').show();
-			}else
-				form.find('.permissionsCreate').hide();
-		});
+      if ($(this).data('type') === 'folder') {
+        form.find('[name="permissions[owner][create]"]').prop('checked', permissionsCheck(item, 'owner', 'create') );
+        form.find('[name="permissions[group][create]"]').prop('checked', permissionsCheck(item, 'group', 'create') );
+        form.find('[name="permissions[everyone][create]"]').prop('checked', permissionsCheck(item, 'everyone', 'create') );
+        form.find('.permissionsCreate').show();
+      }else
+        form.find('.permissionsCreate').hide();
+    });
 
-	});
-	
-	$('#removeFolderModal').on('show.bs.modal', function (e) {
-		var trigger = $(e.relatedTarget);
-		var form = $('#removeFolderForm');
+  });
+  
+  $('#removeFolderModal').on('show.bs.modal', function (e) {
+    var trigger = $(e.relatedTarget);
+    var form = $('#removeFolderForm');
 
-		form.data('id', trigger.data('id'));
-	});
+    form.data('id', trigger.data('id'));
+  });
 
-	$('#removeFolderForm').submit(function (e) {
-		var data = $(this).serialize();
-		var url = '/folder/' + $(this).data('id');
+  $('#removeFolderForm').submit(function (e) {
+    var data = $(this).serialize();
+    var url = '/folder/' + $(this).data('id');
 
-		$.ajax({
-			url: url,
-			method: 'DELETE',
-			data: data,
-			cache: false
-		}).then(function (result) {
-			window.location.reload(true);
-		}, function (e) {
-			var error = e.responseJSON;
-			alert(error.message);
-		});
+    $.ajax({
+      url: url,
+      method: 'DELETE',
+      data: data,
+      cache: false
+    }).then(function (result) {
+      window.location.reload(true);
+    }, function (e) {
+      var error = e.responseJSON;
+      alert(error.message);
+    });
 
-		e.preventDefault();
-	});
+    e.preventDefault();
+  });
 
-	$('#removeFileModal').on('show.bs.modal', function (e) {
-		var trigger = $(e.relatedTarget);
-		var form = $('#removeFileForm');
+  $('#removeFileModal').on('show.bs.modal', function (e) {
+    var trigger = $(e.relatedTarget);
+    var form = $('#removeFileForm');
 
-		form.data('id', trigger.data('id'));
-	});
+    form.data('id', trigger.data('id'));
+  });
 
-	$('#removeFileForm').submit(function (e) {
-		var data = $(this).serialize();
-		var url = '/file/' + $(this).data('id');
+  $('#removeFileForm').submit(function (e) {
+    var data = $(this).serialize();
+    var url = '/file/' + $(this).data('id');
 
-		$.ajax({
-			url: url,
-			method: 'DELETE',
-			data: data,
-			cache: false
-		}).then(function (result) {
-			window.location.reload(true);
-		}, function (e) {
-			var error = e.responseJSON;
-			alert(error.message);
-		});
+    $.ajax({
+      url: url,
+      method: 'DELETE',
+      data: data,
+      cache: false
+    }).then(function (result) {
+      window.location.reload(true);
+    }, function (e) {
+      var error = e.responseJSON;
+      alert(error.message);
+    });
 
-		e.preventDefault();
-	});
+    e.preventDefault();
+  });
 
-	$('#newFileForm').submit(function (e) {
-		$(this).prop('action', '/file/' + folder);
-		$(this).find('[name="redirect"]').val('/#' + folder);
-	});
+  $('#newFileForm').submit(function (e) {
+    $(this).prop('action', '/file/' + folder);
+    $(this).find('[name="redirect"]').val('/#' + folder);
+  });
 
-	function populateUsers() {
-		var select = $('#editForm [name="permissions[owner][id]"]');
+  function populateUsers() {
+    var select = $('#editForm [name="permissions[owner][id]"]');
 
-		$.ajax({
-			url: '/users',
-			method: 'GET',
-			cache: false
-		}).then(function (users) {
-			$.each(users.users, function (index, user) {
-				var option = $('<option />').val(user._id).text(user.username);
-				select.append(option);
-			});
-		});
-	}
-	populateUsers();
+    $.ajax({
+      url: '/users',
+      method: 'GET',
+      cache: false
+    }).then(function (users) {
+      $.each(users.users, function (index, user) {
+        var option = $('<option />').val(user._id).text(user.username);
+        select.append(option);
+      });
+    });
+  }
+  populateUsers();
 
-	var router = new Trails;
-	router.route('/', function (path) {
-		folder = null;
-		loadFolder();
-	});
+  var router = new Trails;
+  router.route('/', function (path) {
+    folder = null;
+    loadFolder();
+  });
 
-	router.route('#:id', function (path) {
-		folder = path.params.id;
-		loadFolder();
-	});
+  router.route('#:id', function (path) {
+    folder = path.params.id;
+    loadFolder();
+  });
 
-	function loadFolder() {
-		var url = '/folders?output=json';
-		if (folder) url = '/folder/' + folder + '?includeParent=true&output=json';
+  function loadFolder() {
+    var url = '/folders?output=json';
+    if (folder) url = '/folder/' + folder + '?includeParent=true&output=json';
 
-		$.ajax({
-			url: url,
-			method: 'GET',
-			cache: false
-		}).then(function (f) {
-			var folderName = "Folders";
-			if (f.name)
-				folderName = f.name;
-			$('#name').text(folderName);
+    $.ajax({
+      url: url,
+      method: 'GET',
+      cache: false
+    }).then(function (f) {
+      var folderName = "Folders";
+      if (f.name)
+        folderName = f.name;
+      $('#name').text(folderName);
 
-			if (!f.permissions || (f.permissions.you && f.permissions.you.create)) {
-				$('#newFolderButton').show();
-				if (folder)
-					$('#newFileButton').show();
-				else
-					$('#newFileButton').hide();
-			}else{
-				$('#newFolderButton').hide();
-				$('#newFileButton').hide();
-			}
+      if (!f.permissions || (f.permissions.you && f.permissions.you.create)) {
+        $('#newFolderButton').show();
+        if (folder)
+          $('#newFileButton').show();
+        else
+          $('#newFileButton').hide();
+      }else{
+        $('#newFolderButton').hide();
+        $('#newFileButton').hide();
+      }
 
-			if (f.children && f.children.folders) {
-				$('#folders ul').empty();
-				$.each(f.children.folders, function (index, f1) {
-					var a = $('<a href="#' + (f1._id || '') + '">' + f1.name + '</a>');
-					var li = $('<li></li>').append(a);
+      if (f.children && f.children.folders) {
+        $('#folders ul').empty();
+        $.each(f.children.folders, function (index, f1) {
+          var a = $('<a href="#' + (f1._id || '') + '">' + f1.name + '</a>');
+          var li = $('<li></li>').append(a);
 
-					if (f1.permissions && f1.permissions.write) {
-						var edit = $('<a href="#" data-toggle="modal" data-target="#editModal" data-type="folder" data-id="' + f1._id + '"><span class="glyphicon glyphicon-edit"></span></a>');
-						var remove = $('<a href="#" data-toggle="modal" data-target="#removeFolderModal" data-id="' + f1._id + '"><span class="glyphicon glyphicon-trash"></span></a>');
-						li.append($('<span class="pull-right"/>').append(edit).append(' ').append(remove));
-					}
+          if (f1.permissions && f1.permissions.write) {
+            var edit = $('<a href="#" data-toggle="modal" data-target="#editModal" data-type="folder" data-id="' + f1._id + '"><span class="glyphicon glyphicon-edit"></span></a>');
+            var remove = $('<a href="#" data-toggle="modal" data-target="#removeFolderModal" data-id="' + f1._id + '"><span class="glyphicon glyphicon-trash"></span></a>');
+            li.append($('<span class="pull-right"/>').append(edit).append(' ').append(remove));
+          }
 
-					$('#folders ul').append(li);
-				});
-			}
+          $('#folders ul').append(li);
+        });
+      }
 
-			if (f.children && f.children.files) {
-				$('#files ul').empty();
+      if (f.children && f.children.files) {
+        $('#files ul').empty();
 
-				$.each(f.children.files, function (index, f1) {
-					var a = $('<a href="/file/view/' + f1._id + '">' + f1.name + '</a>');
-					var li = $('<li></li>').append(a);
+        $.each(f.children.files, function (index, f1) {
+          var a = $('<a href="/file/view/' + f1._id + '">' + f1.name + '</a>');
+          var li = $('<li></li>').append(a);
 
-					var group = $('<span class="pull-right"/>');
-					var dload = $('<a href="/file/download/' + f1._id + '"><span class="glyphicon glyphicon-download"></span></a>');
-					group.append(dload);
+          var group = $('<span class="pull-right"/>');
+          var dload = $('<a href="/file/download/' + f1._id + '"><span class="glyphicon glyphicon-download"></span></a>');
+          group.append(dload);
 
-					if (f1.permissions && f1.permissions.write) {
-						var edit = $('<a href="#" data-toggle="modal" data-target="#editModal" data-type="file" data-id="' + f1._id + '"><span class="glyphicon glyphicon-edit"></span></a>');
-						var remove = $('<a href="#" data-toggle="modal" data-target="#removeFileModal" data-id="' + f1._id + '"><span class="glyphicon glyphicon-trash"></span></a>');
-						group.append(' ').append(edit).append(' ').append(remove);
-					}
+          if (f1.permissions && f1.permissions.write) {
+            var edit = $('<a href="#" data-toggle="modal" data-target="#editModal" data-type="file" data-id="' + f1._id + '"><span class="glyphicon glyphicon-edit"></span></a>');
+            var remove = $('<a href="#" data-toggle="modal" data-target="#removeFileModal" data-id="' + f1._id + '"><span class="glyphicon glyphicon-trash"></span></a>');
+            group.append(' ').append(edit).append(' ').append(remove);
+          }
 
-					li.append(group);
+          li.append(group);
 
-					$('#files ul').append(li);
-				});
-			}
-		}, function (e) {
-			var error = e.responseJSON;
-			alert(error.message);
-		});
-	}
+          $('#files ul').append(li);
+        });
+      }
+    }, function (e) {
+      var error = e.responseJSON;
+      alert(error.message);
+    });
+  }
 });
 
 </script>

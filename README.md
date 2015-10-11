@@ -12,9 +12,9 @@ A default configuration setup is located in `./lib/defaultConfig.js`
 You can override any of these settings when starting Summit by passing them in in Summit's config. ex:
 ```
 var app = Summit({ files: {
-	files: { permissions: { 
-		everyone: { read: true, write: true, create: true }
-	} }
+  files: { permissions: { 
+    everyone: { read: true, write: true, create: true }
+  } }
 } });
 ```
 

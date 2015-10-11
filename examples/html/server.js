@@ -1,7 +1,7 @@
 var Summit = require('summit');
 
 var app = new Summit({
-	db: {
+  db: {
     driver: 'nano',
     host: process.env.DBHOST || 'localhost',
     port: process.env.DBPORT || 5984,
@@ -31,21 +31,21 @@ app.collection({
   },
   staticDocs: [
     {
-			"_id": "3e0a6a05-28a7-4dd3-a81a-45e9f9dbf3ef",
-			"email": "email@gmail.com",
-			"username": "user",
-			"firstName": "User",
-			"lastName": "User",
-			"type": "User",
-			"collection": "User",
-			"service": "password",
-			"hashedPassword": "$2a$12$I3NG7ZlgqVGnyUjlUDEbxuyxm6YZsTz3DsLGSnUhOroRLp3w8J4jS",
-			"isUser": true,
-			"roles" : {},
-			"groups" : {
-				"root.creator": true
-			}
-		}
+      "_id": "3e0a6a05-28a7-4dd3-a81a-45e9f9dbf3ef",
+      "email": "email@gmail.com",
+      "username": "user",
+      "firstName": "User",
+      "lastName": "User",
+      "type": "User",
+      "collection": "User",
+      "service": "password",
+      "hashedPassword": "$2a$12$I3NG7ZlgqVGnyUjlUDEbxuyxm6YZsTz3DsLGSnUhOroRLp3w8J4jS",
+      "isUser": true,
+      "roles" : {},
+      "groups" : {
+        "root.creator": true
+      }
+    }
   ]
 });
 
@@ -148,13 +148,13 @@ router.post('/login', function (req, User) {
     if (user) {
       req.session('user', user);
       return Summit.json({
-      	success: true,
-      	message: 'Logged in'
+        success: true,
+        message: 'Logged in'
       });
     }
     return Summit.json({
-    	success: false,
-    	message: 'Failed'
+      success: false,
+      message: 'Failed'
     });
   });
 });
