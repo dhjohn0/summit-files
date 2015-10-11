@@ -100,6 +100,10 @@ router.get('/folder/remove/:id', function (req, respond, views, Folder, user) {
   });
 });
 
+router.get('/file/add/:folder', function (req, respond, views) {
+  return respond(views.files.file.get_file_add_folder, { folder: req.params.folder });
+});
+
 router.get('/file/edit/:id', function (req, respond, views, File, User, user) {
   var file;
   var users;
