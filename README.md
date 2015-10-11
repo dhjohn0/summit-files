@@ -44,5 +44,23 @@ PUT /file/:id ([name], [permissions])
 DEL /file/:id ()
 ```
 
+Each route takes a parameter `output` to tell it whether to return a json object, or a html page using handlebars templating. If `output=json` the route will treturn the json object, otherwise the html page is returned.
+
+##Permissions
+Folder and File permissions are module based. By default, there are no restrictions on the file system.
+A prebuilt system based on owner/group/everyone categories is included also, and can be enabled by calling `app.invoke(require('SummitFiles').OwnerGroupEveryone)` after invoking SummitFiles itself. You can override the default configuration of the permissions settings the same as you can SummitFiles itself. The defualt configuration file is located at `./lib/permissions/ownerGroupEveryoneConfig.js`.
+
+###Folder Permissions
+`read` the user can read the contents of the folder
+`write` the user can update the folder name and permissions object
+`create` the user can add subfolders and files to the folder
+
+###File Permissions
+`read` the user can read the file contents
+`write` the user can update the file name and permissions object of the file
+
 ##Example Server
-There is an example server included at `./examples/json/`, which can be launched with the `server.js` in the same folder
+There are two example file system servers included:
+`./examples/json` is an ajax based server
+`./examples/html` is a html page based server
+To run the example servers, run the `./server.js` file in the folders.
