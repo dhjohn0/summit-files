@@ -26,6 +26,34 @@
           <a href="#" id="login" data-toggle="modal" data-target="#loginModal">Login</a>
         {{/if}}
       </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            {{#flash}}
+              {{#if info}}
+                <div class="alert alert-info">
+                  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                  <p>{{info}}</p>
+                </div>
+              {{/if}}
+              {{#if warn}}
+                <div class="alert alert-warn">
+                  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                  <p>{{warn}}</p>
+                </div>
+              {{/if}}
+              {{#if error}}
+                <div class="alert alert-error">
+                  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                  <p>{{error}}</p>
+                </div>
+              {{/if}}
+            {{/flash}}
+          </div>
+        </div>
+      </div>
+
     {{/block}}
 
     {{#block "body"}}
