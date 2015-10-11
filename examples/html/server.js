@@ -80,6 +80,19 @@ router.get('/folder/edit/:id', function (req, respond, views, Folder, User, user
   });
 });
 
+router.get('/folder/remove/:id', function (req, respond, views, Folder, User, user) {
+  var folder;
+  var users;
+
+  return Folder.get(req.params.id, false, user).then(function (_folder) {
+    folder = _folder;
+
+    return respond(views.files.folder.get_folder_remove_id, {
+      folder: folder
+    });
+  });
+});
+
 router.get('/file/edit/:id', function (req, respond, views, File, User, user) {
   var file;
   var users;
