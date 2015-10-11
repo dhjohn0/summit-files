@@ -50,8 +50,10 @@ app.collection({
 });
 
 var router = app.router();
+var sf = require('../../app');
 
-app.invoke(require('../../app'));
+app.invoke(sf.SummitFiles);
+app.invoke(sf.OwnerGroupEveryonePermissions);
 
 router.get('/', function (respond, views, user) {
   return Summit.redirect('/folders');

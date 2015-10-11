@@ -1,2 +1,7 @@
 var SummitFiles = require('./lib/summitFiles');
-module.exports = SummitFiles;
+var OwnerGroupEveryonePermissions = require('./lib/permissions/ownerGroupEveryonePermissions.js');
+
+module.exports = {
+  SummitFiles: SummitFiles,
+  OwnerGroupEveryonePermissions: OwnerGroupEveryonePermissions
+};
