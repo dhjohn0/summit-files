@@ -25,9 +25,11 @@
               </li>
             {{/each}}
           </ul>
-          <a id="newFolderButton" class="btn btn-default" href="/folder/add">
-            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-          </a>
+          {{#if folders.permissions.you.create}}
+            <a id="newFolderButton" class="btn btn-default" href="/folder/add">
+              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </a>
+          {{/if}}
         </div>
       </div>
       <div class="col-xs-12 col-md-8">
