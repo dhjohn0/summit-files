@@ -57,6 +57,29 @@ router.get('/', function (respond, views, user) {
   return Summit.redirect('/folders');
 });
 
+router.get('/folder/edit/:id', function (req, respond, views, Folder, User, user) {
+  var folder;
+  var users;
+
+  return Folder.get(req.params.id, false, user).then(function (_folder) {
+    folder = _folder;
+
+    return User.view('all'); 
+  }).then(function (_users) {
+    users = _users.map(function (user) {
+      return {
+        _id: user._id,
+        username: user.username
+      };
+    });
+
+    return respond(views.files.folder.get_folder_edit_id, {
+      folder: folder,
+      users: users
+    });
+  });
+});
+
 router.post('/login', function (req, User) {
   var username = req.params.username;
   var password = req.params.password;
