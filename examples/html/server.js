@@ -139,6 +139,16 @@ router.get('/file/remove/:id', function (req, respond, views, File, user) {
   });
 });
 
+router.get('/login', function (req, respond, views) {
+  return respond(views.files.login, {
+    flash: {
+      info: req.flash('info'),
+      warn: req.flash('warn'),
+      error: req.flash('error')
+    }
+  });
+});
+
 router.post('/login', function (req, User) {
   var username = req.params.username;
   var password = req.params.password;
@@ -147,24 +157,20 @@ router.post('/login', function (req, User) {
   return User.authenticate({username: username, password: password}, 'password').then(function (user) {
     if (user) {
       req.session('user', user);
-      return Summit.json({
-        success: true,
-        message: 'Logged in'
-      });
+      req.flash('info', 'Logged in');
+
+      return Summit.redirect('/folders');
+    }else{
+      req.flash('error', 'Incorrect username and/or password');
+      return Summit.redirect('/login');
     }
-    return Summit.json({
-      success: false,
-      message: 'Failed'
-    });
   });
 });
 
 router.get('/logout', function (req) {
   req.session('user', null);
-  return Summit.json({
-    success: true,
-    message: 'Logged out'
-  });
+  req.flash('info', 'Logged out');
+  return Summit.redirect('/folders');
 });
 
 router.get('/users', function (req, User) {

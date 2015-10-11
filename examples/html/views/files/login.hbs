@@ -1,0 +1,46 @@
+{{#extend "layout"}}
+
+{{#replace "body"}}
+
+  <div class="container">
+    <div class="files-browser">
+      <div class="row">
+        <div class="col-xs-12">
+
+          <form id="loginForm" method="POST" action="/login">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <h4 class="modal-title">Login</h4>
+                  </div>
+                </div>
+              </div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <input type="text" class="form-control" name="username" value="" placeholder="Username" />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12">
+                    <input type="password" class="form-control" name="password" value="" placeholder="Password" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <input type="submit" class="btn btn-primary" value="Login" />
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+{{/replace}}
+
+{{/extend}}
