@@ -80,7 +80,7 @@ router.get('/folder/edit/:id', function (req, respond, views, Folder, User, user
   });
 });
 
-router.get('/folder/remove/:id', function (req, respond, views, Folder, User, user) {
+router.get('/folder/remove/:id', function (req, respond, views, Folder, user) {
   var folder;
   var users;
 
