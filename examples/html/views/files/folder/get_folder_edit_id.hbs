@@ -150,5 +150,12 @@
 <script type="text/javascript" src="/js/jquery.js"></script>
 <script src="/js/bootstrap.js"></script>
 
+
+<script type="text/javascript">
+  $(function () {
+    $('[name="permissions[owner][id]"]').val('{{folder.permissions.owner.id}}');
+  });
+</script>
+
 {{/append}}
 {{/extend}}
