@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    {{#block "title"}}
+      <title>{{env.name}}</title>
+    {{/block}}
+
+    {{#block "styles"}}
+      <link rel="stylesheet" type="text/css" href="/css/app.css">
+      <link href="/css/bootstrap.css" rel="stylesheet" />
+    {{/block}}
+
+    {{#block "meta"}}
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{/block}}
+
+  </head>
+  <body>
+    {{#block "top"}}
+      <div class="container-fluid">
+        {{#if user}}
+          Welcome {{user.firstName}} {{user.lastName}}! <a href="#" id="logout">Logout</a>
+        {{else}}
+          <a href="#" id="login" data-toggle="modal" data-target="#loginModal">Login</a>
+        {{/if}}
+      </div>
+    {{/block}}
+
+    {{#block "body"}}
+    {{/block}}
+
+    {{#block "scripts"}}
+      <script type="text/javascript" src="/js/jquery.js"></script>
+      <script src="/js/bootstrap.js"></script>
+      <script src="/js/trails.min.js"></script>
+    {{/block}}
+  </body>
+</html>

@@ -1,20 +1,4 @@
-{{#extend "default_layout"}}
-
-{{#append "meta"}}
-<meta name="viewport" content="width=device-width, initial-scale=1">
-{{/append}}
-
-{{#replace "top"}}
-
-<div class="container-fluid">
-  {{#if user}}
-    Welcome {{user.firstName}} {{user.lastName}}! <a href="#" id="logout">Logout</a>
-  {{else}}
-    <a href="#" id="login" data-toggle="modal" data-target="#loginModal">Login</a>
-  {{/if}}
-</div>
-
-{{/replace}}
+{{#extend "layout"}}
 
 {{#replace "body"}}
 
@@ -147,9 +131,6 @@
 {{/append}}
 
 {{#append "scripts"}}
-<script type="text/javascript" src="/js/jquery.js"></script>
-<script src="/js/bootstrap.js"></script>
-
 
 <script type="text/javascript">
   $(function () {
@@ -158,4 +139,5 @@
 </script>
 
 {{/append}}
+
 {{/extend}}
