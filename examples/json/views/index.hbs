@@ -128,7 +128,7 @@
 								    	<div class="col-xs-6 col-sm-4">
 								    		<input type="checkbox" name="permissions[owner][write]" value="true" /> Write
 								    	</div>
-								    	<div class="col-xs-6 col-sm-4">
+								    	<div class="col-xs-6 col-sm-4 permissionsCreate">
 								    		<input type="checkbox" name="permissions[owner][create]" value="true" /> Create
 								    	</div>
 								    </div>
@@ -158,7 +158,7 @@
 								    	<div class="col-xs-6 col-sm-4">
 								    		<input type="checkbox" name="permissions[group][write]" value="true" /> Write
 								    	</div>
-								    	<div class="col-xs-6 col-sm-4">
+								    	<div class="col-xs-6 col-sm-4 permissionsCreate">
 								    		<input type="checkbox" name="permissions[group][create]" value="true" /> Create
 								    	</div>
 								    </div>
@@ -181,7 +181,7 @@
 								    	<div class="col-xs-6 col-sm-4">
 								    		<input type="checkbox" name="permissions[everyone][write]" value="true" /> Write
 								    	</div>
-								    	<div class="col-xs-6 col-sm-4">
+								    	<div class="col-xs-6 col-sm-4 permissionsCreate">
 								    		<input type="checkbox" name="permissions[everyone][create]" value="true" /> Create
 								    	</div>
 								    </div>
@@ -339,6 +339,11 @@ $(function () {
 	});
 
 	$('#editForm').submit(function (e) {
+		if ($(this).data('type') !== 'folder') {
+			$(this).find('[name="permissions[owner][create]"]').prop('checked', false);
+			$(this).find('[name="permissions[group][create]"]').prop('checked', false);
+			$(this).find('[name="permissions[everyone][create]"]').prop('checked', false);
+		}
 		var data = $(this).serialize();
 		var url = '/' + $(this).data('type') + '/' + $(this).data('id');
 
@@ -382,16 +387,21 @@ $(function () {
 			form.find('[name="permissions[owner][id]"]').val(item.permissions && item.permissions.owner ? item.permissions.owner.id : -1);
 			form.find('[name="permissions[owner][read]"]').prop('checked', permissionsCheck(item, 'owner', 'read') );
 			form.find('[name="permissions[owner][write]"]').prop('checked', permissionsCheck(item, 'owner', 'write') );
-			form.find('[name="permissions[owner][create]"]').prop('checked', permissionsCheck(item, 'owner', 'create') );
 
 			form.find('[name="permissions[group][name]"]').val(item.permissions && item.permissions.group ? item.permissions.group.name : '');
 			form.find('[name="permissions[group][read]"]').prop('checked', permissionsCheck(item, 'group', 'read') );
 			form.find('[name="permissions[group][write]"]').prop('checked', permissionsCheck(item, 'group', 'write') );
-			form.find('[name="permissions[group][create]"]').prop('checked', permissionsCheck(item, 'group', 'create') );
 
 			form.find('[name="permissions[everyone][read]"]').prop('checked', permissionsCheck(item, 'everyone', 'read') );
 			form.find('[name="permissions[everyone][write]"]').prop('checked', permissionsCheck(item, 'everyone', 'write') );
-			form.find('[name="permissions[everyone][create]"]').prop('checked', permissionsCheck(item, 'everyone', 'create') );
+
+			if ($(this).data('type') === 'folder') {
+				form.find('[name="permissions[owner][create]"]').prop('checked', permissionsCheck(item, 'owner', 'create') );
+				form.find('[name="permissions[group][create]"]').prop('checked', permissionsCheck(item, 'group', 'create') );
+				form.find('[name="permissions[everyone][create]"]').prop('checked', permissionsCheck(item, 'everyone', 'create') );
+				form.find('.permissionsCreate').show();
+			}else
+				form.find('.permissionsCreate').hide();
 		});
 
 	});
