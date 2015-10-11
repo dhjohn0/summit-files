@@ -1,0 +1,71 @@
+{{#extend "default_layout"}}
+
+{{#append "meta"}}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{{/append}}
+
+{{#replace "top"}}
+
+<div class="container-fluid">
+  {{#if user}}
+    Welcome {{user.firstName}} {{user.lastName}}! <a href="#" id="logout">Logout</a>
+  {{else}}
+    <a href="#" id="login" data-toggle="modal" data-target="#loginModal">Login</a>
+  {{/if}}
+</div>
+
+{{/replace}}
+
+{{#replace "body"}}
+
+  <div class="container">
+    <div class="files-browser">
+      <div class="row">
+        <div class="col-xs-12">
+
+          <form id="newFolderForm" method="POST" action="/folder">
+            {{#if parent}}
+              <input type="hidden" name="parent" value="{{parent}}" />
+              <input type="hidden" name="redirect" value="/folder/{{parent}}?includeParent=true" />
+            {{else}}
+              <input type="hidden" name="redirect" value="/folders" />
+            {{/if}}
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <h4 class="modal-title">Folder Name</h4>
+                  </div>
+                </div>
+              </div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <input type="text" class="form-control" name="name" value="" placeholder="Name" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <input type="submit" class="btn btn-primary" value="Create" />
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+{{/replace}}
+
+{{#append "styles"}}
+<link href="/css/bootstrap.css" rel="stylesheet" />
+{{/append}}
+
+{{#append "scripts"}}
+<script type="text/javascript" src="/js/jquery.js"></script>
+<script src="/js/bootstrap.js"></script>
+{{/append}}
+{{/extend}}

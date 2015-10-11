@@ -57,6 +57,14 @@ router.get('/', function (respond, views, user) {
   return Summit.redirect('/folders');
 });
 
+router.get('/folder/add', function (req, respond, views) {
+  return respond(views.files.folder.get_folder_add_parent, { parent: null });
+});
+
+router.get('/folder/add/:parent', function (req, respond, views) {
+  return respond(views.files.folder.get_folder_add_parent, { parent: req.params.parent });
+});
+
 router.get('/folder/edit/:id', function (req, respond, views, Folder, User, user) {
   var folder;
   var users;
