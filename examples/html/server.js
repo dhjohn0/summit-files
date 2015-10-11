@@ -80,6 +80,29 @@ router.get('/folder/edit/:id', function (req, respond, views, Folder, User, user
   });
 });
 
+router.get('/file/edit/:id', function (req, respond, views, File, User, user) {
+  var file;
+  var users;
+
+  return File.get(req.params.id, user).then(function (_file) {
+    file = _file;
+
+    return User.view('all'); 
+  }).then(function (_users) {
+    users = _users.map(function (user) {
+      return {
+        _id: user._id,
+        username: user.username
+      };
+    });
+
+    return respond(views.files.file.get_file_edit_id, {
+      file: file,
+      users: users
+    });
+  });
+});
+
 router.post('/login', function (req, User) {
   var username = req.params.username;
   var password = req.params.password;

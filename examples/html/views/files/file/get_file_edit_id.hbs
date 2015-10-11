@@ -1,0 +1,152 @@
+{{#extend "default_layout"}}
+
+{{#append "meta"}}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{{/append}}
+
+{{#replace "top"}}
+
+<div class="container-fluid">
+  {{#if user}}
+    Welcome {{user.firstName}} {{user.lastName}}! <a href="#" id="logout">Logout</a>
+  {{else}}
+    <a href="#" id="login" data-toggle="modal" data-target="#loginModal">Login</a>
+  {{/if}}
+</div>
+
+{{/replace}}
+
+{{#replace "body"}}
+
+  <div class="container">
+    <div class="files-browser">
+      <div class="row">
+        <div class="col-xs-12">
+
+          <form id="editForm" method="POST" action="/file/{{file._id}}">
+            {{#if file.folder}}
+              <input type="hidden" name="redirect" value="/folder/{{file.folder}}?includeParent=true" />
+            {{else}}
+              <input type="hidden" name="redirect" value="/folders" />
+            {{/if}}
+            <input type="hidden" name="_method" value="PUT" />
+            <div class="row">
+              <div class="col-xs-12">
+                <input type="text" class="form-control" name="name" value="{{file.name}}" placeholder="Name" />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <div class="row">
+                      <div class="col-xs-4 col-sm-2">
+                        Owner:
+                      </div>
+                      <div class="col-xs-8 col-sm-10">
+                        <select class="form-control" name="permissions[owner][id]">
+                          {{#each users}}
+                            <option value="{{_id}}">{{username}}</option>
+                          {{/each}}
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  {{#file.permissions.owner}}
+                    <div class="panel-body">
+                      <div class="row">
+                        <div class="col-xs-6 col-sm-4">
+                          <input type="checkbox" name="permissions[owner][read]" value="true" {{#read}}checked="checked"{{/read}} /> Read
+                        </div>
+                        <div class="col-xs-6 col-sm-4">
+                          <input type="checkbox" name="permissions[owner][write]" value="true" {{#write}}checked="checked"{{/write}} /> Write
+                        </div>
+                      </div>
+                    </div>
+                  {{/file.permissions.owner}}
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <div class="row">
+                      <div class="col-xs-4 col-sm-2">
+                        Group:
+                      </div>
+                      <div class="col-xs-8 col-sm-10">
+                        <input type="text" class="form-control" name="permissions[group][name]" value="{{file.permissions.group.name}}" placeholder="group" />
+                      </div>
+                    </div> 
+                  </div>
+                  {{#file.permissions.group}}
+                    <div class="panel-body">
+                      <div class="row">
+                        <div class="col-xs-6 col-sm-4">
+                          <input type="checkbox" name="permissions[group][read]" value="true" {{#read}}checked="checked"{{/read}} /> Read
+                        </div>
+                        <div class="col-xs-6 col-sm-4">
+                          <input type="checkbox" name="permissions[group][write]" value="true" {{#write}}checked="checked"{{/write}} /> Write
+                        </div>
+                      </div>
+                    </div>
+                  {{/file.permissions.group}}
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    Everyone
+                  </div>
+                  {{#file.permissions.everyone}}
+                    <div class="panel-body">
+                      <div class="row">
+                        <div class="col-xs-6 col-sm-4">
+                          <input type="checkbox" name="permissions[everyone][read]" value="true" {{#read}}checked="checked"{{/read}} /> Read
+                        </div>
+                        <div class="col-xs-6 col-sm-4">
+                          <input type="checkbox" name="permissions[everyone][write]" value="true" {{#write}}checked="checked"{{/write}} /> Write
+                        </div>
+                      </div>
+                    </div>
+                  {{/file.permissions.everyone}}
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <input type="submit" class="btn btn-primary" value="Update" />
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+{{/replace}}
+
+{{#append "styles"}}
+<link href="/css/bootstrap.css" rel="stylesheet" />
+{{/append}}
+
+{{#append "scripts"}}
+<script type="text/javascript" src="/js/jquery.js"></script>
+<script src="/js/bootstrap.js"></script>
+
+
+<script type="text/javascript">
+  $(function () {
+    $('[name="permissions[owner][id]"]').val('{{file.permissions.owner.id}}');
+  });
+</script>
+
+{{/append}}
+{{/extend}}
