@@ -82,7 +82,6 @@ router.get('/folder/edit/:id', function (req, respond, views, Folder, User, user
 
 router.get('/folder/remove/:id', function (req, respond, views, Folder, user) {
   var folder;
-  var users;
 
   return Folder.get(req.params.id, false, user).then(function (_folder) {
     folder = _folder;
@@ -112,6 +111,18 @@ router.get('/file/edit/:id', function (req, respond, views, File, User, user) {
     return respond(views.files.file.get_file_edit_id, {
       file: file,
       users: users
+    });
+  });
+});
+
+router.get('/file/remove/:id', function (req, respond, views, File, user) {
+  var file;
+
+  return File.get(req.params.id, false, user).then(function (_file) {
+    file = _file;
+
+    return respond(views.files.file.get_file_remove_id, {
+      file: file
     });
   });
 });

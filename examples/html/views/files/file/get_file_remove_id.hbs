@@ -1,0 +1,73 @@
+{{#extend "default_layout"}}
+
+{{#append "meta"}}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{{/append}}
+
+{{#replace "top"}}
+
+<div class="container-fluid">
+  {{#if user}}
+    Welcome {{user.firstName}} {{user.lastName}}! <a href="#" id="logout">Logout</a>
+  {{else}}
+    <a href="#" id="login" data-toggle="modal" data-target="#loginModal">Login</a>
+  {{/if}}
+</div>
+
+{{/replace}}
+
+{{#replace "body"}}
+
+  <div class="container">
+    <div class="files-browser">
+      <div class="row">
+        <div class="col-xs-12">
+
+          <form id="removeFileForm" method="POST" action="/file/{{file._id}}">
+              <input type="hidden" name="redirect" value="/folder/{{file.folder}}?includeParent=true" />
+            <input type="hidden" name="_method" value="DELETE" />
+
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <div class="row">
+                      <div class="col-xs-12">
+                        Remove File - {{file.name}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel-body">
+                    <div class="row">
+                      <div class="col-xs-6 col-sm-4">
+                        Delete File?
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-12">
+                <input type="submit" class="btn btn-primary" value="Remove" />
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+{{/replace}}
+
+{{#append "styles"}}
+<link href="/css/bootstrap.css" rel="stylesheet" />
+{{/append}}
+
+{{#append "scripts"}}
+<script type="text/javascript" src="/js/jquery.js"></script>
+<script src="/js/bootstrap.js"></script>
+{{/append}}
+{{/extend}}
