@@ -142,13 +142,7 @@ router.get('/file/remove/:id', function (req, respond, views, File, user) {
 });
 
 router.get('/login', function (req, respond, views) {
-  return respond(views.files.login, {
-    flash: {
-      info: req.flash('info'),
-      warn: req.flash('warn'),
-      error: req.flash('error')
-    }
-  });
+  return respond(views.files.login);
 });
 
 router.post('/login', function (req, User) {
