@@ -16,7 +16,7 @@ sudo make install
 mkdir /home/vagrant/node_modules
 chown vagrant:vagrant /home/vagrant/node_modules
 cd /vagrant
-ln -sf ~/node_modules .
+ln -sf /home/vagrant/node_modules .
 
 sudo npm install -g nodemon
 curl -X PUT http://localhost:5984/_config/httpd/bind_address -d '"0.0.0.0"'
