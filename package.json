@@ -6,8 +6,7 @@
   "scripts": {},
   "author": "David Johnson",
   "devDependencies": {},
-  "dependencies": {
-    "bogart-edge": "^0.7.3",
+  "peerDependencies": {
     "summit": "^0.1.22"
   },
   "license": "MIT"
