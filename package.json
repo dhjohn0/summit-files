@@ -1,6 +1,6 @@
 {
   "name": "summit-files",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "A file system for summit",
   "main": "app.js",
   "scripts": {},
